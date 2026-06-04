@@ -79,12 +79,6 @@
 
 > **boundaryValue** - *required* > For surfaceType. Value defining the surface field based on the surface type
 
-> **cutVelocity** - *optional* > If to cut velocity when it goes in oposity direction to surface normal. Used for testing. Default false
->> Possible values: {*true*, *false*}
-
-> **cutPhi** - *optional* > If to cut fluxes inside immersed boundary. Used for testing. Default false
->> Possible values: {*true*, *false*}
-
 > **useNormSurface** - *optional* > If to correct surface field based on the surface normal. Default false.
 >> Possible values: {*true*, *false*}
 
