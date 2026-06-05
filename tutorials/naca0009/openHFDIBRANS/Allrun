@@ -26,3 +26,6 @@ runParallel $application
 
 # reconstruct
 runApplication reconstructPar -newTimes
+
+# post-processing
+runApplication calculateForceCoeffs

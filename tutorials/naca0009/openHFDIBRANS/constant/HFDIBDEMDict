@@ -17,9 +17,11 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 surfaceThreshold    1e-4;
-sdBasedLambda       true;
+sdBasedLambda       false;
+stlName             naca;
 interfaceSpan       1.0;
 saveIntInfo         false;
+surfAreaType        cutEdges;
 
 wallFunctions
 {
@@ -27,6 +29,15 @@ wallFunctions
     k       kLowReWallFunction;
     omega   omegaWallFunction;
     epsilon epsilonWallFunction;
+}
+
+forceCoeffs 
+{
+    rhoInf      1000.0;
+    dragDir     (1 0 0);
+    liftDir     (0 1 0);
+    magUInf     13.187;
+    ARef        0.004;
 }
 
 // ************************************************************************* //
