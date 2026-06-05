@@ -8,12 +8,6 @@ cd $cwd/straightPipe/openHFDIBRANS
 cd $cwd/straightPipe/simpleFoam
 ./Allrun
 
-cd $cwd/asymmetricalPipe/openHFDIBRANS
-./Allrun
-
-cd $cwd/asymmetricalPipe/simpleFoam
-./Allrun
-
 cd $cwd/backwardFacingStep/openHFDIBRANS
 ./Allrun
 
