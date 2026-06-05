@@ -2,10 +2,10 @@
 
 cwd=$(echo $PWD)
 
-cd $cwd/straightPipe
+cd $cwd/openHFDIBRANS
 ./Allclean
 
-cd $cwd/backwardFacingStep
+cd $cwd/simpleFoam
 ./Allclean
 
 cd $cwd
