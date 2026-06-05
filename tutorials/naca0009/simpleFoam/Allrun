@@ -6,7 +6,6 @@
 rm -rf 0
 
 # create base mesh 
-#~ cp -r constant/polyMesh_bcp constant/polyMesh
 runApplication blockMesh
 
 # run snappy
