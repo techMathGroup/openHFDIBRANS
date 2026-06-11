@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cwd=$(echo $PWD)
+
+cd $cwd/openHFDIBRANS
+./Allclean
+
+cd $cwd/simpleFoam
+./Allclean
+
+cd $cwd
