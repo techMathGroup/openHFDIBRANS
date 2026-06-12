@@ -17,75 +17,51 @@ FoamFile
 
 solvers
 {
-    "(p|Phi)"
+    p
     {
         solver          GAMG;
-        tolerance       1e-9;
-        relTol          0.005;
-        smoother        FDIC;
+        tolerance       1e-10;
+        relTol          0.0;
+        smoother        symGaussSeidel;
         nPreSweeps      0;
         nPostSweeps     2;
         nFinestSweeps   2;
-        cacheAgglomeration      on;
-        nCellsInCoarsestLevel   10;
-        agglomerator            faceAreaPair;
-        processorAgglomerator   procFaces;
-        nAgglomeratingCells     400;
-        mergeLevels             1;
+        cacheAgglomeration true;
+        nCellsInCoarsestLevel 5;
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
     }
-    
+
     pFinal
     {
-        solver          GAMG;
-        tolerance       1e-12;
+        $p;
+        tolerance       1e-10;
         relTol          0;
-        smoother        FDIC;
-        nPreSweeps      0;
-        nPostSweeps     2;
-        nFinestSweeps   2;
-        cacheAgglomeration      on;
-        nCellsInCoarsestLevel   10;
-        agglomerator            faceAreaPair;
-        processorAgglomerator   procFaces;
-        nAgglomeratingCells     400;
     }
 
-    "(U|k|omega|epsilon)"
+    "(U|k|epsilon|omega|R|nuTilda)"
     {
-        solver          GAMG;
+        solver          PBiCG;
+        preconditioner   DILU;
         tolerance       1e-12;
-        relTol          0.01;
-        smoother       	DILU;
-        nPreSweeps      0;
-        nPostSweeps     2;
-        nFinestSweeps   2;
-        cacheAgglomeration      on;
-        nCellsInCoarsestLevel   10;
-        agglomerator            faceAreaPair;
-        processorAgglomerator   procFaces;
-        nAgglomeratingCells     400;
-        mergeLevels             1;
+        relTol          0.0;
     }
-    
-    UFinal
+    "(U|k|epsilon|omega|R|nuTilda)Final"
     {
-        solver          GAMG;
-        tolerance       1e-11;
+        solver          PBiCG;
+        preconditioner   DILU;
+        tolerance       1e-12;
         relTol          0;
-        smoother        DILU;
-        nPreSweeps      0;
-        nPostSweeps     2;
-        nFinestSweeps   2;
-        cacheAgglomeration      on;
-        nCellsInCoarsestLevel   10;
-        agglomerator            faceAreaPair;
-        processorAgglomerator   procFaces;
-        nAgglomeratingCells     400;
-        mergeLevels             1;
     }
-
 }
 
+PISO
+{
+    nCorrectors     4;
+    nNonOrthogonalCorrectors 0;
+    pRefCell        0;
+    pRefValue       0;
+}
 
 PIMPLE
 {
@@ -98,11 +74,11 @@ PIMPLE
     
     outerCorrectorResidualControl
     {
-	p
-	{
-	    tolerance   1e-7;
-	    relTol      0;
-	}
+	    p
+	    {
+	        tolerance   1e-7;
+	        relTol      0;
+	    }
     }
 }
 
@@ -131,19 +107,16 @@ relaxationFactors
         k           0.8;
         omega       0.8;
     }
+
     equations
     {
         ".*" 0.85;
     }
 }
 
-PISO
+cache
 {
-    momentumPredictor true;
-    nCorrectors     6;
-    nNonOrthogonalCorrectors 2;
-    pRefCell        1001;
-    pRefValue       0;
+    grad(U);
 }
 
 // ************************************************************************* //

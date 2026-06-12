@@ -2,10 +2,16 @@
 
 cwd=$(echo $PWD)
 
-cd $cwd/straightPipe
+cd $cwd/pipe2D
 ./Allrun
 
 cd $cwd/backwardFacingStep
+./Allrun
+
+cd $cwd/cylinder
+./Allrun
+
+cd $cwd/naca0009
 ./Allrun
 
 cd $cwd

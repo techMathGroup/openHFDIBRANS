@@ -35,23 +35,37 @@ solvers
     pFinal
     {
         $p;
-        tolerance       1e-12;
+        tolerance       1e-10;
         relTol          0;
     }
 
-    "(U|k|epsilon|omega|R|nuTilda)"
+    "(U|k|epsilon|R|nuTilda)"
     {
         solver          PBiCG;
         preconditioner   DILU;
-        tolerance       1e-8;
+        tolerance       1e-12;
         relTol          0.0;
     }
-    "(U|k|epsilon|omega|R|nuTilda)Final"
+    "(U|k|epsilon|R|nuTilda)Final"
     {
         solver          PBiCG;
         preconditioner   DILU;
         tolerance       1e-12;
         relTol          0;
+    }
+    omega
+    {
+        solver          PBiCG;
+        preconditioner   DILU;
+        tolerance       1e-20;
+        relTol          0.0;
+    }
+    omegaFinal
+    {
+        solver          PBiCG;
+        preconditioner   DILU;
+        tolerance       1e-20;
+        relTol          0.0;
     }
 }
 
@@ -93,7 +107,7 @@ PIMPLE
 SIMPLE
 {
     nNonOrthogonalCorrectors 1;
-    consistent yes; //I changed this
+    consistent yes;
     
     residualControl
     {
@@ -115,6 +129,7 @@ relaxationFactors
         k           0.8;
         omega       0.8;
     }
+
     equations
     {
         ".*" 0.85;
@@ -125,4 +140,5 @@ cache
 {
     grad(U);
 }
+
 // ************************************************************************* //

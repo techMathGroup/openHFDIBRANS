@@ -93,7 +93,7 @@ PIMPLE
 SIMPLE
 {
     nNonOrthogonalCorrectors 0;
-    consistent yes; //I changed this
+    consistent yes;
     
     residualControl
     {

@@ -26,6 +26,5 @@ residuals
         p
         k
         omega
-	epsilon
     );
 }
