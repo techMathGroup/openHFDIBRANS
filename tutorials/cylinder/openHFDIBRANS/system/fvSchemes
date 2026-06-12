@@ -24,12 +24,11 @@ gradSchemes
 {
     default         Gauss linear;
     grad(U)         cellLimited Gauss linear 1;
-    grad(body)      linear;
+    grad(lambda)    pointCellsLeastSquares;
 }
 
 divSchemes
 {
-    //~ default         none;
     default         Gauss linear;
     div(phi,U)      bounded Gauss upwind;
     div(phi,k)      bounded Gauss upwind;
@@ -71,7 +70,7 @@ HFDIBSchemes
     outerSchemes
     {
         U               outer quadratic;
-        k               outer quadratic;
+        k               switched quadratic logarithmic;
     }
 
     innerSchemes

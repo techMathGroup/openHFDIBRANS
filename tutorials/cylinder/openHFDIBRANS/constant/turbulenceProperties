@@ -14,11 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-//~ simulationType laminar;
 simulationType  HFDIBRAS;
-//~ simulationType RAS;
-//~ simulationType  LES;
-
 
 HFDIBRAS
 {
@@ -29,91 +25,6 @@ HFDIBRAS
     disGBoundaryValue   1.0;
     kSurfaceType        switched;
     kBoundaryValue      1.0;
-    tolKEqn             1e-8;
-    maxKEqnIters        1;
-}
- 
-
-RAS
-{
-    RASModel	    HFDIBKOmega;
-    turbulence          on;
-    printCoeffs         on;
-}
-
-
-LES
-{
-    LESModel        dynamicKEqn;
-    turbulence      on;
-    printCoeffs     on;
-    delta           cubeRootVol;
-    
-    dynamicKEqnCoeffs
-    {
-        filter simple;
-    }
-    
-    cubeRootVolCoeffs
-    {
-        deltaCoeff      1;
-    }
-    
-    PrandtlCoeffs
-    {
-        delta           cubeRootVol;
-        cubeRootVolCoeffs
-        {
-            deltaCoeff      1;
-        }
-    
-        smoothCoeffs
-        {
-            delta           cubeRootVol;
-            cubeRootVolCoeffs
-            {
-                deltaCoeff      1;
-            }
-    
-            maxDeltaRatio   1.1;
-        }
-    
-        Cdelta          0.158;
-    }
-    
-    vanDriestCoeffs
-    {
-        delta           cubeRootVol;
-        cubeRootVolCoeffs
-        {
-            deltaCoeff      1;
-        }
-    
-        smoothCoeffs
-        {
-            delta           cubeRootVol;
-            cubeRootVolCoeffs
-            {
-                deltaCoeff      1;
-            }
-    
-            maxDeltaRatio   1.1;
-        }
-    
-        Aplus           26;
-        Cdelta          0.158;
-    }
-    
-    smoothCoeffs
-    {
-        delta           cubeRootVol;
-        cubeRootVolCoeffs
-        {
-            deltaCoeff      1;
-        }
-    
-        maxDeltaRatio   1.1;
-    }
 }
 
 // ************************************************************************* //

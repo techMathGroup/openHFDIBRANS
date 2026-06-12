@@ -19,10 +19,7 @@ surfaceThreshold    1e-4;
 sdBasedLambda       false;
 stlName             cylinder;
 interfaceSpan       1.0;
-saveIntInfo         true;
-scaleDisG           true;
-scaleCoeff          1.0;
-
+saveIntInfo         false;
 surfAreaType        cutEdges;
 
 wallFunctions
