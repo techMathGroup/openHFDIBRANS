@@ -58,15 +58,15 @@
 # Documentation for HFDIBSchemes subdict in fvSchemes
 **outerSchemes** - *required* > Interpolation schemes for reconstruction of the surface value at the immerse boundary. Separate entry for each field consisting of two tokens
 > **U** - *required* > Scheme for velocity
->> Possible first tokens: {*unifunctional*, *lambdaBased*, *switched*, *outerInner*, *inner*}
+>> Possible first tokens: {*outer*, *lambdaBased*, *switched*, *outerInner*, *inner*}
 >> Possible second tokens: {*constant*, *linear*, *quadratic*, *logarithmic*, *fixedGradient*, *zeroGradient*}. Two for *switched* and *outerInner*
 
 > **k** - *required if present* > Schemes for turbulence kinetic energy
->> Possible first tokens: {*unifunctional*, *switched*, *outerInner*, *inner*}
+>> Possible first tokens: {*outer*, *switched*, *outerInner*, *inner*}
 >> Possible second tokens: {*constant*, *linear*, *quadratic*, *logarithmic*, *fixedGradient*, *zeroGradient*}. Two for *switched* and *outerInner*
 
 > **T** - *required if present* > Schemes for scalar T
->> Possible first tokens: {*unifunctional*}
+>> Possible first tokens: {*outer*}
 >> Possible second tokens: {*constant*, *linear*, *quadratic*, *logarithmic*, *fixedGradient*, *zeroGradient*}
 
 **innerSchemes** - *required* > Interpolation schemes for interpolating values from cell centers to points. Separate entry for each field
